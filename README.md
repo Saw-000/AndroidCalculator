@@ -16,7 +16,7 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
 #### 下準備  
 ✅フラグメントを作る  
 #### 電卓機能実装  
-・UI追加  
+✅UI追加  
 ・バックエンド実装-> 
 ・optin-menuの実装  
 ・Nav Drawerの実装  
