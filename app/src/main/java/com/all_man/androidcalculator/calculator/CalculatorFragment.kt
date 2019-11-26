@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.all_man.androidcalculator.R
-import com.all_man.androidcalculator.databinding.FragmentBananaGameBinding
+import com.all_man.androidcalculator.databinding.FragmentCalculatorBinding
 
 class CalculatorFragment: Fragment() {
 
@@ -16,8 +16,7 @@ class CalculatorFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val binding : FragmentBananaGameBinding = DataBindingUtil.inflate(
+        val binding : FragmentCalculatorBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_calculator, container, false)
 
         return binding.root
