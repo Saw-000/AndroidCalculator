@@ -14,12 +14,11 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
 ✅それらを使ったapp機能を考える  
 ✅設計をおこす  
 #### 下準備  
-・フラグメントを作る  
-・Navigationを実装  
-・backBottun設定  
+✅フラグメントを作る  
+#### 電卓機能実装  
+・UI追加  
+・バックエンド実装-> 
 ・optin-menuの実装  
 ・Nav Drawerの実装  
-#### 電卓機能実装  
-
 #### SearchBananaFragment機能実装  
 #### SearchBananaFragment2機能実装  
