@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/calculatorFragment">
+
+    <fragment
+        android:id="@+id/calculatorFragment"
+        android:name="com.all_man.androidcalculator.calculator.CalculatorFragment"
+        android:label="CalculatorFragment" />
+    <fragment
+        android:id="@+id/bananaGameFragment"
+        android:name="com.all_man.androidcalculator.bananagame.BananaGameFragment"
+        android:label="BananaGameFragment" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.all_man.androidcalculator.nodataFragments.DetailFragment"
+        android:label="DetailFragment" />
+    <fragment
+        android:id="@+id/bananaGame2Fragment"
+        android:name="com.all_man.androidcalculator.bananagame2.BananaGame2Fragment"
+        android:label="BananaGame2Fragment" />
+    <fragment
+        android:id="@+id/clearFragment"
+        android:name="com.all_man.androidcalculator.nodataFragments.ClearFragment"
+        android:label="ClearFragment" />
+    <fragment
+        android:id="@+id/gameOverFragment"
+        android:name="com.all_man.androidcalculator.nodataFragments.GameOverFragment"
+        android:label="GameOverFragment" />
+</navigation>
