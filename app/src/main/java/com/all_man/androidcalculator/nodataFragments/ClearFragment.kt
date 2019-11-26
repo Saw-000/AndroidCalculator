@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.all_man.androidcalculator.R
-import com.all_man.androidcalculator.databinding.FragmentBananaGameBinding
+import com.all_man.androidcalculator.databinding.FragmentClearBinding
 
 class ClearFragment : Fragment() {
 
@@ -17,7 +17,7 @@ class ClearFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding : FragmentBananaGameBinding = DataBindingUtil.inflate(
+        val binding : FragmentClearBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_clear, container, false)
 
         return binding.root
