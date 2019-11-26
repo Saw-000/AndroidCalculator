@@ -20,10 +20,10 @@
     <string name="nine_button">9</string>
     <string name="plus_button">+</string>
     <string name="minus_button">-</string>
-    <string name="multiple_button">×</string>
+    <string name="multiple_button">*</string>
     <string name="allClear_button">AC</string>
     <string name="answer_button">Ans</string>
     <string name="delete_button">del</string>
     <string name="percent_button">%</string>
-    <string name="divide_button">÷</string>
+    <string name="divide_button">/</string>
 </resources>
