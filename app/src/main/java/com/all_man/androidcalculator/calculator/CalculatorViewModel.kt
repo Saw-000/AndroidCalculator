@@ -21,7 +21,7 @@ class CalculatorViewModel : ViewModel() {
     val calculatedAnswer : LiveData<Double?>
         get() = _calculatedAnswer
 
-    private val desplayedAnswer = Transformations.map(calculatedAnswer) {
+    val displayedAnswer = Transformations.map(calculatedAnswer) {
        when (it) {
            null -> null
            else -> "Ans= ${it}"
@@ -30,9 +30,9 @@ class CalculatorViewModel : ViewModel() {
 
     // Display_formula_textの最後の一文字
     // LiveDataなんだけど、格納してる型であるStringとして扱えた。(というかLiveData型では扱えなかった。)
-    private val lastCharactor = Transformations.map(displayedFormula) {
+    /**private*/ val lastCharactor = Transformations.map(displayedFormula) {
         it?.let{
-            toString().substring(it.length-1)
+            it.substring(it.length-1)
         }
     }
 
@@ -165,7 +165,11 @@ class CalculatorViewModel : ViewModel() {
     /** 押されたボタンの文字を計算式に追加する処理 */
     fun addChar(view: View) {
         val textView = view as TextView
-        _displayedFormula.value += textView.text
+        if (_displayedFormula.value == null) {
+            _displayedFormula.value = textView.text.toString()
+        } else {
+            _displayedFormula.value += textView.text.toString()
+        }
     }
 
     /** =ボタンのerror_messageを表示した後の処理 */

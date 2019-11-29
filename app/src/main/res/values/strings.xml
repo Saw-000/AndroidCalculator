@@ -1,11 +1,9 @@
 <resources>
     <string name="app_name">AndroidCalculator</string>
-    <string name="text_calculate" />
-    <string name="text_answer" />
+    <string name="hint_formula_text">no formula</string>
+    <string name="hint_result_text">no Ans</string>
     <string name="banana_find">Let\'s find one banana!</string>
 
-    <string name="calculate_text">0</string>
-    <string name="result_text">0</string>
     <string name="zero_button">0</string>
     <string name="dot_button">.</string>
     <string name="equal_button">=</string>
@@ -26,5 +24,5 @@
     <string name="delete_button">del</string>
     <string name="percent_button">%</string>
     <string name="divide_button">/</string>
-    <string name="hint_text">0</string>
+
 </resources>
