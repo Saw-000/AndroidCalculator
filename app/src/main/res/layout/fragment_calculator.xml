@@ -14,12 +14,13 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/calculate_text"
+            android:id="@+id/fomula_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/big_margin"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginEnd="@dimen/big_margin"
+            android:hint="@string/hint_text"
             android:padding="@dimen/text_padding"
             android:text="@{viewModel.calcText}"
             android:textAlignment="textEnd"
@@ -28,7 +29,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="0" />
+            tools:text="no formula" />
 
         <TextView
             android:id="@+id/answer_text"
@@ -44,8 +45,8 @@
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/calculate_text"
-            tools:text="0" />
+            app:layout_constraintTop_toBottomOf="@+id/fomula_text"
+            tools:text="no Ans" />
 
         <Button
             android:id="@+id/play_banana_button"

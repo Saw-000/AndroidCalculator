@@ -47,4 +47,6 @@ dependencies {
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
 
+    // exp4j: Evaluate a formula
+    implementation 'net.objecthunter:exp4j:0.4.8'
 }
