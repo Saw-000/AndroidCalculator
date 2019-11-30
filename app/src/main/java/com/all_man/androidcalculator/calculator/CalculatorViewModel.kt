@@ -124,7 +124,7 @@ class CalculatorViewModel : ViewModel() {
     }
 
 
-    // TODO: .: 末尾が数字かつ、一番後ろの数字に.が含まれない
+    // .: 末尾が数字かつ、一番後ろの数字に.が含まれない
     fun addDot(view: View) {
         displayedFormula.value?.let {
             when (lastCharactor.value) {
