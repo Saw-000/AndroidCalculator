@@ -119,15 +119,37 @@ class CalculatorViewModel : ViewModel() {
         }
     }
 
-    // .: textに.が含まれないかつ末尾が数字、なら＋
+
+    // TODO: .: 末尾が数字かつ、一番後ろの数字に.が含まれない
     fun addDot(view: View) {
         displayedFormula.value?.let {
-            if(!it.contains(".")) {
-                when (lastCharactor.value) {
-                    //TODO: 数字列挙うざいなー
-                    "0","1","2","3","4","5","6","7","8","9" -> addChar(view)
+            when (lastCharactor.value) {
+                //TODO: 数字列挙うざいなー
+                "0","1","2","3","4","5","6","7","8","9" -> {
+                    var dispFormula =displayedFormula.value.toString()
+                            .substring(0, displayedFormula.value.toString().length-1)
+                    val originalDispFormulaLength = dispFormula.length
+                    loop@ for (i in 1..originalDispFormulaLength) {
+                        when (dispFormula.substring(dispFormula.length-1)) {
+                            "." -> {
+                                break@loop
+                            }
+                            "+", "-", "*", "/" -> {
+                                addChar(view)
+                                break@loop
+                            }
+                            else -> {
+                                if (i == originalDispFormulaLength) {
+                                    addChar(view)
+                                } else {
+                                    dispFormula = dispFormula.substring(0, dispFormula.length - 1)
+                                }
+                            }
+                        }
+                    }
                 }
             }
+
         }
     }
 
