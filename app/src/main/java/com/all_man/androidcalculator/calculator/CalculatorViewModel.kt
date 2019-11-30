@@ -122,31 +122,28 @@ class CalculatorViewModel : ViewModel() {
     fun addDot(view: View) {
         displayedFormula.value?.let {
             if(!it.contains(".")) {
-                // TODO:toInt()処理ができない時点でエラーになる。。
-                when (lastCharactor.value?.toInt()) {
-                    is Int -> addChar(view)
+                when (lastCharactor.value) {
+                    //TODO: 数字列挙うざいなー
+                    "0","1","2","3","4","5","6","7","8","9" -> addChar(view)
                 }
             }
         }
     }
 
     // +=*/: 末尾が、数字かAns、なら＋
-    // - は [_displayedformula] がnullでも打てる
+    // - は _displayedformula がnullでも打てる
     fun addOperator(view: View) {
-        val textView = view as TextView
-        //　スマートキャスト用ローカル変数
-        val lastChar = lastCharactor.value
-        when(lastChar){
+        when(lastCharactor.value){
             // _displayedformula == null の時は - が押された時だけ＋
-            null -> if (textView.text == "-") _displayedFormula.value = "-"
-            // 末尾が、数字かAns、なら＋
-            "s" -> addChar(view)
-            else ->  {
-                // TODO:toInt()処理ができない時点でエラーになる。。
-                if (lastChar.toInt() is Int) {
-                    addChar(view)
-                }
+            null -> {
+                val textView = view as TextView
+                if (textView.text == "-") _displayedFormula.value = "-"
             }
+            // 末尾が、数字かAns、なら＋
+            //TODO: 数字列挙うざいなー
+            "0","1","2","3","4","5","6","7","8","9",
+            "s"
+            ->  addChar(view)
         }
     }
 
@@ -155,24 +152,16 @@ class CalculatorViewModel : ViewModel() {
     fun addNum(view: View) {
         val textView = view as TextView
         when (lastCharactor.value) {
-            null, ".", "+", "-", "*", "/" -> addChar(view)
-            else ->  {
-                // 末尾が数字の場合
-                if (lastCharactor.value?.toInt() is Int) {
-                    when (lastCharactor.value) {
-                        "0" -> {
-                            val length = displayedFormula.value.toString().length
-                            if (length >= 2){
-                                if (displayedFormula.value?.substring(length-2, length-2) != "0" ){
-                                    addChar(view)
-                                }
-                            }
-                        }
-                        else -> addChar(view)
+            "s" -> { /** 末尾が"Ans"の時だけ+しない */ }
+            "0" -> {
+                val length = displayedFormula.value.toString().length
+                if (length >= 2){
+                    if (displayedFormula.value?.substring(length-2, length-2) != "0" ){
+                        addChar(view)
                     }
                 }
             }
-
+            else -> addChar(view)
         }
     }
 
