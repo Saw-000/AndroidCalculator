@@ -131,7 +131,7 @@ class CalculatorViewModel : ViewModel() {
                 //TODO: 数字列挙うざいなー
                 "0","1","2","3","4","5","6","7","8","9" -> {
                     var dispFormula =displayedFormula.value.toString()
-                            .substring(0, displayedFormula.value.toString().length-1)
+                            .substring(0, displayedFormula.value.toString().length)
                     val originalDispFormulaLength = dispFormula.length
                     loop@ for (i in 1..originalDispFormulaLength) {
                         when (dispFormula.substring(dispFormula.length-1)) {
