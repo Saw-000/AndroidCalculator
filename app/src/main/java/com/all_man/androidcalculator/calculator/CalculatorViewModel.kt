@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
+import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class CalculatorViewModel : ViewModel() {
@@ -16,6 +17,14 @@ class CalculatorViewModel : ViewModel() {
     val displayedFormula : LiveData<String?>
         get() = _displayedFormula
 
+    // Display_formula_textの最後の一文字
+    // LiveDataなんだけど、格納してる型であるStringとして扱えた。(というかLiveData型では扱えなかった。)
+    val lastCharactor = Transformations.map(displayedFormula) {
+        when (it) {
+            null -> null
+            else -> it.substring(it.length-1)
+        }
+    }
     // Calculated_Answer in Double
     private val _calculatedAnswer = MutableLiveData<Double?>()
     val calculatedAnswer : LiveData<Double?>
@@ -28,13 +37,7 @@ class CalculatorViewModel : ViewModel() {
        }
     }
 
-    // Display_formula_textの最後の一文字
-    // LiveDataなんだけど、格納してる型であるStringとして扱えた。(というかLiveData型では扱えなかった。)
-    /**private*/ val lastCharactor = Transformations.map(displayedFormula) {
-        it?.let{
-            it.substring(it.length-1)
-        }
-    }
+
 
     // =押した時のerror_messageを表示するトリガー
     private val _showErrorMessageStart = MutableLiveData<Boolean>()
@@ -70,8 +73,9 @@ class CalculatorViewModel : ViewModel() {
     fun delete() {
         if (null != displayedFormula.value) {
             when (lastCharactor.value) {
-                "s" -> _displayedFormula.value.toString().substring(0, lastCharactor.value.toString().length-3)
-                else -> _displayedFormula.value.toString().substring(lastCharactor.value.toString().length-1)
+                "s" -> _displayedFormula.value!!.substring(0, lastCharactor.value.toString().length-3)
+                else -> _displayedFormula.value!!.substring(lastCharactor.value.toString().length-1)
+                //!!: _displayedFormula.valueは実際null出ないと保証されているけど、外の変数にスマートキャスト働かないからなあ。。
             }
 
         }
@@ -92,11 +96,24 @@ class CalculatorViewModel : ViewModel() {
         when (lastCharactor.value) {
             null, ".", "+", "-", "*", "/" -> _showErrorMessageStart.value = true
             else -> {
-                // exp4j API を使って計算式を評価。
-                // TODO: まず式中の"Ans"を[calculatedAnswer]に入れ替える
-                _calculatedAnswer.value = ExpressionBuilder(displayedFormula.value)
-                    .build()
-                    .evaluate()//TODO: 答えが0の時、小数点以下が邪魔になってる？
+                // まず式中に"Ans"があれば[calculatedAnswer]に入れ替える
+                //　そして、式の評価を _calculatedAnswer へ渡す
+                _calculatedAnswer.value =
+                when (displayedFormula.value!!.contains("Ans")) {
+                    true -> ExpressionBuilder(displayedFormula.value)
+                                .variable("Ans")
+                                .build()
+                                .setVariable("Ans", calculatedAnswer.value!!.toDouble())
+                                .evaluate()
+                    // !!: 実際"Ans"を計算式に入れられる時点でcalculatedAnswerはnon_nullなのだが。スマキャしないから。。
+
+                    false -> ExpressionBuilder(displayedFormula.value)
+                                 .build()
+                                 .evaluate()
+                }
+
+                // 計算式をリセット
+                _displayedFormula.value = null
             }
         }
     }
@@ -105,6 +122,7 @@ class CalculatorViewModel : ViewModel() {
     fun addDot(view: View) {
         displayedFormula.value?.let {
             if(!it.contains(".")) {
+                // TODO:toInt()処理ができない時点でエラーになる。。
                 when (lastCharactor.value?.toInt()) {
                     is Int -> addChar(view)
                 }
@@ -116,13 +134,16 @@ class CalculatorViewModel : ViewModel() {
     // - は [_displayedformula] がnullでも打てる
     fun addOperator(view: View) {
         val textView = view as TextView
-        when(lastCharactor.value){
-            // _displayedformula] == null の時は - が押された時だけ＋
+        //　スマートキャスト用ローカル変数
+        val lastChar = lastCharactor.value
+        when(lastChar){
+            // _displayedformula == null の時は - が押された時だけ＋
             null -> if (textView.text == "-") _displayedFormula.value = "-"
             // 末尾が、数字かAns、なら＋
             "s" -> addChar(view)
             else ->  {
-                if (lastCharactor.value?.toInt() is Int) {
+                // TODO:toInt()処理ができない時点でエラーになる。。
+                if (lastChar.toInt() is Int) {
                     addChar(view)
                 }
             }
@@ -155,10 +176,15 @@ class CalculatorViewModel : ViewModel() {
         }
     }
 
+    // Ans: calculatedAnswerがnullではないとき、かつ、計算式の末尾がoperator
     fun addAns(view: View) {
-        when (lastCharactor.value) {
-            null, "+", "-", "*", "/" -> addChar(view)
+        // 答えがnon nullでないと無反応
+        if (null != calculatedAnswer.value) {
+            when (lastCharactor.value) {
+                null, "+", "-", "*", "/" -> addChar(view)
+            }
         }
+
     }
 
 
