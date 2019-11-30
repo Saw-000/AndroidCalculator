@@ -44,11 +44,11 @@ class CalculatorViewModel : ViewModel() {
     val showErrorMessage : LiveData<Boolean>
         get() = _showErrorMessageStart
 
+
     /** 初期化 */
     init {
         _showErrorMessageStart.value = false
     }
-
 
 
 
@@ -71,14 +71,18 @@ class CalculatorViewModel : ViewModel() {
     // del: displayedTextがnullじゃなければ、１文字消す。
     // 末尾が"s"なら、３文字("Ans")消す。
     fun delete() {
-        val dispFormula = displayedFormula.value //スマキャ用ローカル関数
+        var dispFormula = displayedFormula.value // スマキャ用ローカル関数
         if (null != dispFormula) {
-            _displayedFormula.value =
-                when (lastCharactor.value) {
-                    "s" -> dispFormula.substring(0, dispFormula.length-3)
-                    else -> dispFormula.substring(0, dispFormula.length-1)
+            dispFormula = when (lastCharactor.value) {
+                "s" -> dispFormula.substring(0, dispFormula.length - 3)
+                else -> dispFormula.substring(0, dispFormula.length - 1)
                 }
-
+            _displayedFormula.value =
+                if (dispFormula.isEmpty()){  // displayedTextが0になったらnullを代入
+                    null
+                } else {
+                    dispFormula
+                }
         }
     }
 
