@@ -6,7 +6,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import net.objecthunter.exp4j.Expression
 import net.objecthunter.exp4j.ExpressionBuilder
 
 class CalculatorViewModel : ViewModel() {
@@ -25,18 +24,19 @@ class CalculatorViewModel : ViewModel() {
             else -> it.substring(it.length-1)
         }
     }
+
     // Calculated_Answer in Double
     private val _calculatedAnswer = MutableLiveData<Double?>()
     val calculatedAnswer : LiveData<Double?>
         get() = _calculatedAnswer
 
+    // String? for displaying answer.
     val displayedAnswer = Transformations.map(calculatedAnswer) {
        when (it) {
            null -> null
            else -> "Ans= ${it}"
        }
     }
-
 
 
     // =押した時のerror_messageを表示するトリガー
@@ -151,14 +151,16 @@ class CalculatorViewModel : ViewModel() {
     // 0~9: 末尾が、".", operator, 数字の時は＋
     // ただし 末尾が0 の時は、計算式が2文字以上かつ、2文字前が0ではない、ことが条件
     fun addNum(view: View) {
-        val textView = view as TextView
         when (lastCharactor.value) {
-            "s" -> { /** 末尾が"Ans"の時だけ+しない */ }
+            "s" -> { /** 何もしない */}
             "0" -> {
                 val length = displayedFormula.value.toString().length
                 if (length >= 2){
-                    if (displayedFormula.value?.substring(length-2, length-2) != "0" ){
-                        addChar(view)
+                    when (displayedFormula.value!!.substring(length-2, length-1)){
+                        // 2つ前はoprator/./numがあり得る => operatorじゃなければ＋
+                        "0","1","2","3","4","5","6","7","8","9",
+                        "."
+                        -> addChar(view)
                     }
                 }
             }

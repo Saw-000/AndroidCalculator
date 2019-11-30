@@ -24,5 +24,6 @@
     <string name="delete_button">del</string>
     <string name="percent_button">%</string>
     <string name="divide_button">/</string>
+    <string name="format_last_charactor">lastCharacter = %s</string>
 
 </resources>
