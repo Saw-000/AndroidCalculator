@@ -71,12 +71,13 @@ class CalculatorViewModel : ViewModel() {
     // del: displayedTextがnullじゃなければ、１文字消す。
     // 末尾が"s"なら、３文字("Ans")消す。
     fun delete() {
-        if (null != displayedFormula.value) {
-            when (lastCharactor.value) {
-                "s" -> _displayedFormula.value!!.substring(0, lastCharactor.value.toString().length-3)
-                else -> _displayedFormula.value!!.substring(lastCharactor.value.toString().length-1)
-                //!!: _displayedFormula.valueは実際null出ないと保証されているけど、外の変数にスマートキャスト働かないからなあ。。
-            }
+        val dispFormula = displayedFormula.value //スマキャ用ローカル関数
+        if (null != dispFormula) {
+            _displayedFormula.value =
+                when (lastCharactor.value) {
+                    "s" -> dispFormula.substring(0, dispFormula.length-3)
+                    else -> dispFormula.substring(0, dispFormula.length-1)
+                }
 
         }
     }
