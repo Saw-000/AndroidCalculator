@@ -47,6 +47,12 @@
                     android:text="@string/bio"
                     android:textSize="18sp" />
 
+                <ImageView
+                    android:id="@+id/green_banana_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/green_bananas" />
+
             </LinearLayout>
         </ScrollView>
 
