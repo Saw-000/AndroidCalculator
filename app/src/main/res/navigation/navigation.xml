@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/calculatorFragment"
         android:name="com.all_man.androidcalculator.calculator.CalculatorFragment"
-        android:label="CalculatorFragment" />
+        android:label="電卓" />
     <fragment
         android:id="@+id/bananaGameFragment"
         android:name="com.all_man.androidcalculator.bananagame.BananaGameFragment"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.all_man.androidcalculator.nodataFragments.DetailFragment"
-        android:label="DetailFragment" >
+        android:label="詳細ページ:" >
         <action
             android:id="@+id/action_detailFragment_to_calculatorFragment"
             app:destination="@id/calculatorFragment"
