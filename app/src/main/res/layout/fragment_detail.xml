@@ -10,8 +10,12 @@
         <ScrollView
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/layout_margin"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:layout_marginEnd="@dimen/layout_margin"
+            android:layout_marginBottom="@dimen/layout_margin"
+            app:layout_constraintBottom_toTopOf="@+id/back_to_calculator_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -21,7 +25,7 @@
                 android:id="@+id/layout_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="@dimen/layout_margin"
                 android:orientation="vertical">
 
                 <TextView
@@ -41,7 +45,7 @@
                     android:fontFamily="@font/monda"
                     android:padding="@dimen/text_padding"
                     android:text="@string/bio"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </ScrollView>
@@ -51,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/layout_margin"
             android:text="@string/back_to_calculator"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"
