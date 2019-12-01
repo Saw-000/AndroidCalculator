@@ -49,4 +49,7 @@ dependencies {
 
     // exp4j: Evaluate a formula
     implementation 'net.objecthunter:exp4j:0.4.8'
+
+    // Material Components for Android library
+    implementation 'com.google.android.material:material:1.0.0-rc03'
 }
