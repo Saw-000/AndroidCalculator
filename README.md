@@ -9,25 +9,25 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
 ※但しテストは、機能実装がだいたい終わってからjenkinskか何かを導入しようかなと思っています。  
 　　
 ### 進捗管理
-#### 設計  
+#### ✅設計  
 ✅codelabの機能列挙  
 ✅それらを使ったapp機能を考える  
 ✅設計をおこす  
-#### 下準備  
+#### ✅下準備  
 ✅フラグメントを作る  
-#### 電卓機能実装  
+#### ✅電卓機能実装  
 ✅UI作成  
 ✅バックエンド実装  
-#### DetailFragment実装  
-・UI作成  
-・Navigatin追加  
-  - optin-menuの実装  
-  - Nav Drawerの実装  
-  - Navigation追加
+#### ✅DetailFragment実装  
+✅UI作成  
+✅Navigatin追加  
+  - ✅optin-menuの実装  
+  - ✅Nav Drawerの実装  
+  - ✅Navigation追加
 #### SearchBananaFragment実装  
 ・Navigatin追加  
-  - optin-menuの実装  
-  - Nav Drawerの実装  
+  - optin-menuへの実装  
+  - Nav Drawerへの実装  
   - Navigation追加  
 ・UI作成
  - recycleView実装  
