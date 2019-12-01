@@ -1,5 +1,7 @@
 package com.all_man.androidcalculator.nodataFragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -25,6 +27,11 @@ class DetailFragment : Fragment() {
             it.findNavController().navigate(DetailFragmentDirections.actionDetailFragmentToCalculatorFragment())
         }
 
+        binding.gitUrlText.setOnClickListener {
+            val uri = Uri.parse("https://github.com/Zousaaaaaan/AndroidCalculator")
+            val i = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(i)
+        }
         return binding.root
     }
 

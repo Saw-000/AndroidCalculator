@@ -41,5 +41,6 @@
     \n\n <b>(and more....?)</b>
     </string>
     <string name="detail">detail</string>
+    <string name="git_url_text"><u>https://github.com/Zousaaaaaan/AndroidCalculator</u></string>
 
 </resources>
