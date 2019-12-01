@@ -17,7 +17,7 @@ class BananaGameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding : FragmentBananaGameBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_calculator, container, false)
+            inflater, R.layout.fragment_banana_game, container, false)
 
         return binding.root
     }
