@@ -25,5 +25,20 @@
     <string name="percent_button">%</string>
     <string name="divide_button">/</string>
     <string name="format_last_charactor">lastCharacter = %s</string>
+    <string name="title_detail">電卓とゲームを一緒にしました。。</string>
+    <string name="back_to_calculator">Back</string>
+
+    <string name="bio">使える機能は。。。
+    \n\n<u><b>(実装✅)電卓...</b></u>
+        \n 電卓です。
+        \n(M)VVMに従ってUIと変数の処理を分けました。
+        \nコードは見やすいようにリファクタリングが必要必要かも。
+        \n予想外の量関数をデバッグしなきゃいけなくてびっくりしました。
+    \n\n<u><b>(未実装)バナナを探せゲーム1...</b></u>
+        \n 電卓で答えを出すまでに押したボタンの回数分だけリンゴの画像が表示され、その中からバナナを見つけるゲームです。
+    \n\n<u><b>(未実装)バナナを探せゲーム2...</b></u>
+        \n なんとかしてバナナを見つけてください。（場合によっちゃすぐに見つかってしまいますが）
+    \n\n <b>(and more....?)</b>
+    </string>
 
 </resources>
