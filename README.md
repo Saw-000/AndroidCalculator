@@ -2,7 +2,7 @@
 
 ### 詳細  
 //概要  
-Androidの公式チュートリアル(CodeLab)で学んだことを、一つの電卓appに実装してポートフォリオにしてみようという試み。  
+Androidの公式チュートリアル(CodeLab)で学んだことを、一つの電卓appに実装してポートフォリオにしてみようという試みです。  
 binding, lifeCycle, MVVM, livedata, RecycleView, etc...  
 //ワークフロー  
 "Github 実践入門/大塚弘記著"のp199~”デプロイ中心のワークフロー”に乗っ取っています。  
@@ -16,9 +16,15 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
 #### 下準備  
 ✅フラグメントを作る  
 #### 電卓機能実装  
-✅UI追加  
-・バックエンド実装-> 
-・optin-menuの実装  
-・Nav Drawerの実装  
-#### SearchBananaFragment機能実装  
-#### SearchBananaFragment2機能実装  
+✅UI作成  
+✅バックエンド実装  
+#### テスト(jenkins)導入  
+#### DetailFragment実装  
+UI作成  
+・Navigatin追加  
+  - optin-menuの実装  
+  - Nav Drawerの実装  
+  - Navigation追加
+#### SearchBananaFragment実装  
+#### SearchBananaFragment2実装  
+
