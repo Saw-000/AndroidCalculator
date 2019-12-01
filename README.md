@@ -6,7 +6,7 @@ Androidの公式チュートリアル(CodeLab)で学んだことを、一つの�
 binding, lifeCycle, MVVM, livedata, RecycleView, etc...  
 //ワークフロー  
 "Github 実践入門/大塚弘記著"のp199~”デプロイ中心のワークフロー”に乗っ取っています。  
-※但しテストは、電卓の機能実装が終わったらjenkinsを導入しようかなと思っています。  
+※但しテストは、機能実装がだいたい終わってからjenkinskか何かを導入しようかなと思っています。  
 　　
 ### 進捗管理
 #### 設計  
@@ -18,13 +18,19 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
 #### 電卓機能実装  
 ✅UI作成  
 ✅バックエンド実装  
-#### テスト(jenkins)導入  
 #### DetailFragment実装  
-UI作成  
+・UI作成  
 ・Navigatin追加  
   - optin-menuの実装  
   - Nav Drawerの実装  
   - Navigation追加
 #### SearchBananaFragment実装  
+・Navigatin追加  
+  - optin-menuの実装  
+  - Nav Drawerの実装  
+  - Navigation追加  
+・UI作成
+ - recycleView実装  
+ - touch機能実装  
 #### SearchBananaFragment2実装  
-
+#### テスト(jenkins)導入  
