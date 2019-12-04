@@ -38,16 +38,25 @@ class CalculatorViewModel : ViewModel() {
        }
     }
 
-
     // =押した時のerror_messageを表示するトリガー
     private val _showErrorMessageStart = MutableLiveData<Boolean>()
     val showErrorMessage : LiveData<Boolean>
         get() = _showErrorMessageStart
 
+    // 数字およびAnsを押した回数を記録する(BananaGameに渡すsafeArgs)
+    private var _TappedNumCount: Int
+    val TappedNumCount : Int
+        get() = _TappedNumCount
+
+    // playBananaGameButtonを押せるかどうかのtrigger
+    val playButtonVisible = Transformations.map(displayedFormula) {
+        it == null && TappedNumCount != 0
+    }
 
     /** 初期化 */
     init {
         _showErrorMessageStart.value = false
+        _TappedNumCount = 0
     }
 
 
@@ -117,6 +126,8 @@ class CalculatorViewModel : ViewModel() {
                                  .evaluate()
                 }
 
+                // 数字およびAnsを押した回数を記録する
+                _TappedNumCount = countTappedNum(displayedFormula.value!!)
                 // 計算式をリセット
                 _displayedFormula.value = null
             }
@@ -205,7 +216,6 @@ class CalculatorViewModel : ViewModel() {
 
     }
 
-
     /** 押されたボタンの文字を計算式に追加する処理 */
     fun addChar(view: View) {
         val textView = view as TextView
@@ -216,6 +226,14 @@ class CalculatorViewModel : ViewModel() {
         }
     }
 
-    /** =ボタンのerror_messageを表示した後の処理 */
+    // 計算式の数字とAnswerの数(数字およびAnsが押された回数)を_TappedNumCountに記録する
+    fun countTappedNum(s: String): Int {
+        return s.replace("[-+*/.]".toRegex(), "")
+            .replace("Ans", "0").length
+    }
+
+
+    // =ボタンのerror_messageを表示した後の処理
     fun showErrorMessageFinished() { _showErrorMessageStart.value = false }
+
 }

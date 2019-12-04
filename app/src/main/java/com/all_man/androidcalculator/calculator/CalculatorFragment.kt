@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.all_man.androidcalculator.R
 import com.all_man.androidcalculator.databinding.FragmentCalculatorBinding
+import com.all_man.androidcalculator.nodataFragments.DetailFragmentDirections
 
 class CalculatorFragment: Fragment() {
 
@@ -27,12 +28,17 @@ class CalculatorFragment: Fragment() {
         viewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
         binding.viewModel = viewModel
 
+        binding.playBananaButton.setOnClickListener {
+            it.findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToBananaGameFragment(viewModel.TappedNumCount))
+        }
         viewModel.showErrorMessage.observe(this, Observer {
             if (it==true) {
                 Toast.makeText(context, "Your formula hasn't completed.", Toast.LENGTH_SHORT).show()
                 viewModel.showErrorMessageFinished()
             }
         })
+
+
         // This is used so that the binding can observe LiveData updates.
         // => automatically update the views in the layout
         binding.lifecycleOwner = this

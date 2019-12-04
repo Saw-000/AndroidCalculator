@@ -16,7 +16,11 @@
     <fragment
         android:id="@+id/bananaGameFragment"
         android:name="com.all_man.androidcalculator.bananagame.BananaGameFragment"
-        android:label="BananaGameFragment" />
+        android:label="BananaGameFragment" >
+        <argument
+            android:name="how_many_tapped"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.all_man.androidcalculator.nodataFragments.DetailFragment"
