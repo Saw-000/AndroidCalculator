@@ -5,7 +5,4 @@
     <item
         android:id="@+id/detailFragment"
         android:title="@string/detail" />
-    <item
-        android:id="@+id/bananaGameFragment"
-        android:title="@string/banana_game" />
 </menu>

@@ -52,4 +52,8 @@ dependencies {
 
     // Material Components for Android library
     implementation 'com.google.android.material:material:1.0.0-rc03'
+
+    // RecyclerView
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
 }

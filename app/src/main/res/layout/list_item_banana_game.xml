@@ -1,26 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
             type="com.all_man.androidcalculator.bananagame.BananaGameViewModel" />
-        <import type="android.view.View"/>
+        <variable
+            name="clickListener"
+            type="com.all_man.androidcalculator.bananagame.RecyclerViewItemListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/apple_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/one_apple"
-            android:adjustViewBounds="true"/>
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(clickListener.numList)}">
+<!--        <ImageView-->
+<!--            android:id="@+id/apple_image"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/one_apple"-->
+<!--            android:adjustViewBounds="true"/>-->
         <FrameLayout
             android:id="@+id/tapped_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="180dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+            <ImageView
+                android:id="@+id/tapped_apple_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:src="@drawable/apple_core"
+                android:adjustViewBounds="true"/>
+        </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

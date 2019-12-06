@@ -13,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import com.all_man.androidcalculator.R
 import com.all_man.androidcalculator.databinding.FragmentCalculatorBinding
 import com.all_man.androidcalculator.nodataFragments.DetailFragmentDirections
+import kotlin.math.absoluteValue
 
 class CalculatorFragment: Fragment() {
 
@@ -29,7 +30,11 @@ class CalculatorFragment: Fragment() {
         binding.viewModel = viewModel
 
         binding.playBananaButton.setOnClickListener {
-            it.findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToBananaGameFragment(viewModel.TappedNumCount))
+            if (viewModel.TappedNumCount <= 2){
+                it.findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToBananaGameFragment(3))
+            } else {
+                it.findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToBananaGameFragment(viewModel.TappedNumCount))
+            }
         }
         viewModel.showErrorMessage.observe(this, Observer {
             if (it==true) {
