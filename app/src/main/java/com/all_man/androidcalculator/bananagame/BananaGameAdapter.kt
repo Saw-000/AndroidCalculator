@@ -1,6 +1,5 @@
 package com.all_man.androidcalculator.bananagame
 
-import android.text.method.NumberKeyListener
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -25,7 +24,7 @@ class BananaGameAdapter(val clickListener: RecyclerViewItemListener) : RecyclerV
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = listOf(position, data[position])
+        val item = Pair(position, data[position])
 
         holder.bind(item, clickListener)
     }
@@ -33,13 +32,13 @@ class BananaGameAdapter(val clickListener: RecyclerViewItemListener) : RecyclerV
 
     class ViewHolder private constructor(val binding: ListItemBananaGameBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(
-            item: List<Int>,
+            item: Pair<Int, Int>,
             clickListener: RecyclerViewItemListener
         ) {
-            clickListener.numList = item
+            binding.numPair = item
             binding.clickListener = clickListener
             binding.tappedAppleImage.setImageResource(
-                when (item[1]) {
+                when (item.second) {
                     -1 -> R.drawable.one_banana
                     -2 -> R.drawable.banana_peel
                     0 -> R.drawable.apple_core
@@ -58,8 +57,6 @@ class BananaGameAdapter(val clickListener: RecyclerViewItemListener) : RecyclerV
     }
 }
 
-
-class RecyclerViewItemListener(var clickListener: (imgNum: List<Int>) -> Unit) {
-    var numList = listOf(0,0)
-    fun onClick(imgNumber: List<Int>) = clickListener(imgNumber)
+class RecyclerViewItemListener(var clickListener: (imgNumPair: Pair<Int, Int>) -> Unit) {
+    fun onClick(numPair: Pair<Int, Int>) = clickListener(numPair)
 }

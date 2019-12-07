@@ -9,12 +9,16 @@
         <variable
             name="clickListener"
             type="com.all_man.androidcalculator.bananagame.RecyclerViewItemListener" />
+        <variable
+            name="numPair"
+            type="kotlin.Pair" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(clickListener.numList)}">
+        android:onClick="@{() -> clickListener.onClick(numPair)}">
 <!--        <ImageView-->
 <!--            android:id="@+id/apple_image"-->
 <!--            android:layout_width="match_parent"-->
