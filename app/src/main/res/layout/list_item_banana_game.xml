@@ -39,7 +39,7 @@
                 android:layout_height="match_parent"
                 tools:src="@drawable/apple_core"
                 android:adjustViewBounds="true"/>
-            
+
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
