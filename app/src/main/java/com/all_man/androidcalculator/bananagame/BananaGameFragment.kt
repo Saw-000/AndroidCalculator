@@ -33,9 +33,9 @@ class BananaGameFragment : Fragment() {
         val adapter = BananaGameAdapter(RecyclerViewItemListener {
             Log.i("BananaFragment", "item=${it}")
             when (it.second) {
-                1 -> viewModel.setImageNum(it.second, -1)
-                2 -> viewModel.setImageNum(it.second, -2)
-                else -> viewModel.setImageNum(it.second, 0)
+                1 -> viewModel.setImageNum(it.first, -1)
+                2 -> viewModel.setImageNum(it.first, -2)
+                else -> viewModel.setImageNum(it.first, 0)
             }
         })
         binding.appleRecyclerView.adapter = adapter

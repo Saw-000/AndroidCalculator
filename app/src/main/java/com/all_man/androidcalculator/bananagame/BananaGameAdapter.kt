@@ -35,13 +35,13 @@ class BananaGameAdapter(val clickListener: RecyclerViewItemListener) : RecyclerV
             item: Pair<Int, Int>,
             clickListener: RecyclerViewItemListener
         ) {
-            binding.numPair = item
             binding.clickListener = clickListener
+            binding.holdNumPair = HoldNumPair(item)
             binding.tappedAppleImage.setImageResource(
                 when (item.second) {
+                    0 -> R.drawable.apple_core
                     -1 -> R.drawable.one_banana
                     -2 -> R.drawable.banana_peel
-                    0 -> R.drawable.apple_core
                     else -> R.drawable.one_apple
                 }
             )
@@ -58,5 +58,9 @@ class BananaGameAdapter(val clickListener: RecyclerViewItemListener) : RecyclerV
 }
 
 class RecyclerViewItemListener(var clickListener: (imgNumPair: Pair<Int, Int>) -> Unit) {
-    fun onClick(numPair: Pair<Int, Int>) = clickListener(numPair)
+    fun onClick(holdNumPair: HoldNumPair) = clickListener(holdNumPair.numPair)
 }
+
+data class HoldNumPair(
+    var numPair : Pair<Int, Int> = Pair(0,0)
+)

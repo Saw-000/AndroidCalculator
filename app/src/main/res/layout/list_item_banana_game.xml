@@ -10,15 +10,15 @@
             name="clickListener"
             type="com.all_man.androidcalculator.bananagame.RecyclerViewItemListener" />
         <variable
-            name="numPair"
-            type="kotlin.Pair" />
+            name="holdNumPair"
+            type="com.all_man.androidcalculator.bananagame.HoldNumPair" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(numPair)}">
+        android:onClick="@{() -> clickListener.onClick(holdNumPair)}">
 <!--        <ImageView-->
 <!--            android:id="@+id/apple_image"-->
 <!--            android:layout_width="match_parent"-->
@@ -39,6 +39,7 @@
                 android:layout_height="match_parent"
                 tools:src="@drawable/apple_core"
                 android:adjustViewBounds="true"/>
+            
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
