@@ -32,10 +32,11 @@ class BananaGameFragment : Fragment() {
         // adapter作成。viewModelから、recyclerViewに使うListを渡す。
         val adapter = BananaGameAdapter(RecyclerViewItemListener {
             Log.i("BananaFragment", "item=${it}")
-            when (it.second) {
-                1 -> viewModel.setImageNum(it.first, -1)
-                2 -> viewModel.setImageNum(it.first, -2)
-                else -> viewModel.setImageNum(it.first, 0)
+            when (it.second[0]) {
+                1 -> viewModel.setImageNum(it.first, -1, false)
+                2 -> viewModel.setImageNum(it.first, -2, true)
+                0, -1, -2 -> {}
+                else -> viewModel.setImageNum(it.first, 0, false)
             }
         })
         binding.appleRecyclerView.adapter = adapter
