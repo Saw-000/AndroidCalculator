@@ -49,7 +49,7 @@ class BananaGameFragment : Fragment() {
             it.findNavController().navigate(BananaGameFragmentDirections.actionBananaGameFragmentToCalculatorFragment())
         }
 
-        binding.appleRecyclerView.layoutManager = GridLayoutManager(activity, 2)
+        binding.appleRecyclerView.layoutManager = GridLayoutManager(activity, 3)
 
         binding.setLifecycleOwner(this)
         return binding.root
