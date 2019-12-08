@@ -12,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.all_man.androidcalculator.R
 import com.all_man.androidcalculator.databinding.FragmentCalculatorBinding
+import com.all_man.androidcalculator.nodataFragments.DetailFragmentDirections
+import kotlin.math.absoluteValue
 
 class CalculatorFragment: Fragment() {
 
@@ -27,12 +29,21 @@ class CalculatorFragment: Fragment() {
         viewModel = ViewModelProviders.of(this).get(CalculatorViewModel::class.java)
         binding.viewModel = viewModel
 
+        binding.playBananaButton.setOnClickListener {
+            if (viewModel.TappedNumCount <= 2){
+                it.findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToBananaGameFragment(3))
+            } else {
+                it.findNavController().navigate(CalculatorFragmentDirections.actionCalculatorFragmentToBananaGameFragment(viewModel.TappedNumCount))
+            }
+        }
         viewModel.showErrorMessage.observe(this, Observer {
             if (it==true) {
                 Toast.makeText(context, "Your formula hasn't completed.", Toast.LENGTH_SHORT).show()
                 viewModel.showErrorMessageFinished()
             }
         })
+
+
         // This is used so that the binding can observe LiveData updates.
         // => automatically update the views in the layout
         binding.lifecycleOwner = this
@@ -47,7 +58,7 @@ class CalculatorFragment: Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return NavigationUI.onNavDestinationSelected(item!!, view!!.findNavController())
+        return NavigationUI.onNavDestinationSelected(item, view!!.findNavController())
                 || super.onOptionsItemSelected(item)
     }
 
