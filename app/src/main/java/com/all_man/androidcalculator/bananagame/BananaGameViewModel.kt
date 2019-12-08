@@ -18,9 +18,4 @@ class BananaGameViewModel(tappedNum: Int): ViewModel() {
         imgNumberList = (1..tappedNum).toList().shuffled().toMutableList()
         _imgNumberListLive.value = imgNumberList
     }
-
-    fun setImageNum(position: Int, imgNum: Int) {
-        imgNumberList[position] = imgNum
-        _imgNumberListLive.value = imgNumberList
-    }
 }

@@ -1,7 +1,6 @@
 package com.all_man.androidcalculator.bananagame
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,14 +29,7 @@ class BananaGameFragment : Fragment() {
         binding.viewModel = viewModel
 
         // adapter作成。viewModelから、recyclerViewに使うListを渡す。
-        val adapter = BananaGameAdapter(RecyclerViewItemListener {
-            Log.i("BananaFragment", "item=${it}")
-            when (it.second) {
-                1 -> viewModel.setImageNum(it.second, -1)
-                2 -> viewModel.setImageNum(it.second, -2)
-                else -> viewModel.setImageNum(it.second, 0)
-            }
-        })
+        val adapter = BananaGameAdapter()
         binding.appleRecyclerView.adapter = adapter
 
         viewModel.imgNumberListLive.observe(this, Observer {
@@ -48,9 +40,8 @@ class BananaGameFragment : Fragment() {
             it.findNavController().navigate(BananaGameFragmentDirections.actionBananaGameFragmentToCalculatorFragment())
         }
 
-        binding.appleRecyclerView.layoutManager = GridLayoutManager(activity, 2)
+        binding.appleRecyclerView.layoutManager = GridLayoutManager(activity, 3)
 
-        binding.setLifecycleOwner(this)
         return binding.root
     }
 }
