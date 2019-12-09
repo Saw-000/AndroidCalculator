@@ -53,7 +53,7 @@ class BananaGameFragment : Fragment() {
 
         // recyclerViewにallImageInfoを渡す
         viewModel.allImageInfo.observe(viewLifecycleOwner, Observer {
-            it?.let { adapter.submitList(it) }
+            it?.let { adapter.addHeaderAndSubmitList(it) }
         })
 
 
@@ -61,7 +61,14 @@ class BananaGameFragment : Fragment() {
             it.findNavController().navigate(BananaGameFragmentDirections.actionBananaGameFragmentToCalculatorFragment())
         }
 
-        binding.appleRecyclerView.layoutManager = GridLayoutManager(activity, 3)
+        val manager = GridLayoutManager(activity, 3)
+        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int = when (position){
+                0 -> 3
+                else -> 1
+            }
+        }
+        binding.appleRecyclerView.layoutManager = manager
 
 
         return binding.root
