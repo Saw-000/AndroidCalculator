@@ -22,3 +22,4 @@ class ExampleInstrumentedTest {
         assertEquals("com.all_man.androidcalculator", appContext.packageName)
     }
 }
+

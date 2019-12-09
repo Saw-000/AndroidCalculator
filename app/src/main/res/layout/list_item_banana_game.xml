@@ -10,21 +10,15 @@
             name="clickListener"
             type="com.all_man.androidcalculator.bananagame.RecyclerViewItemListener" />
         <variable
-            name="holdNumPair"
-            type="com.all_man.androidcalculator.bananagame.HoldNumPair" />
+            name="appleImageInfo"
+            type="com.all_man.androidcalculator.database.AppleImageInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/my_list_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick(holdNumPair)}">
-<!--        <ImageView-->
-<!--            android:id="@+id/apple_image"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:src="@drawable/one_apple"-->
-<!--            android:adjustViewBounds="true"/>-->
+        android:onClick="@{() -> clickListener.onClick(appleImageInfo)}">
         <FrameLayout
             android:id="@+id/tapped_frame"
             android:layout_width="match_parent"
@@ -39,7 +33,18 @@
                 android:layout_height="match_parent"
                 tools:src="@drawable/apple_core"
                 android:adjustViewBounds="true"/>
-            
+            <TextView
+                android:id="@+id/inform_wrong_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:fontFamily="casual"
+                android:text="@string/inform_wrong"
+                android:textAlignment="center"
+                android:textColor="#AB090909"
+                android:textSize="30sp"
+                android:visibility="invisible"/>
+
         </FrameLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

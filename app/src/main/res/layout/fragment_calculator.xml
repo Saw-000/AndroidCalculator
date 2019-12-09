@@ -8,6 +8,7 @@
         <variable
             name="viewModel"
             type="com.all_man.androidcalculator.calculator.CalculatorViewModel" />
+        <import type="com.all_man.androidcalculator.AutoFontFitTextView"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
