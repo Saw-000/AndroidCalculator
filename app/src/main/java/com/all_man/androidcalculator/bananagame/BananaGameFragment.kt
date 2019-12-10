@@ -61,6 +61,7 @@ class BananaGameFragment : Fragment() {
             it.findNavController().navigate(BananaGameFragmentDirections.actionBananaGameFragmentToCalculatorFragment())
         }
 
+        // recyclerViewにlayoutManagerを渡す。
         val manager = GridLayoutManager(activity, 3)
         manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int = when (position){
