@@ -45,4 +45,8 @@
     <string name="banana_game">ばななゲーム1</string>
     <string name="inform_wrong">ハズレ</string>
     <string name="header_text">バナナはどこ？</string>
+    <string name="next_level">NextLevel</string>
+    <string name="clear">clear</string>
+    <string name="game_over">GameOver</string>
+    <string name="try_again">try again</string>
 </resources>
