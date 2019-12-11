@@ -79,12 +79,22 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
 
 
     // When right-image is clicked, change _navigateToClearFragment.value to true.
-    fun onNavigateToClearFragment() { _navigateToClearFragment.value = imageNum }
+    fun onNavigateToClearFragment() {
+        uiScope.launch {
+            delay(1500)
+            _navigateToClearFragment.value = imageNum
+        }
+    }
     // When the Navigation is finished, change _navigateToClearFragment.value to false.
     fun onFinishNavigateToClearFragment() { _navigateToClearFragment.value = null }
 
     // When wrong-image is clicked or time is up, change _navigateToGameOverFragment.value to true.
-    fun onNavigateToGameOverFragment() { _navigateToGameOverFragment.value = imageNum }
+    fun onNavigateToGameOverFragment() {
+        uiScope.launch {
+            delay(1500)
+            _navigateToGameOverFragment.value = imageNum
+        }
+    }
     // When the Navigation is finished, change _navigateToGameOverFragment.value to false.
     fun onFinishNavigateToGameOverFragment() { _navigateToGameOverFragment.value = null }
 

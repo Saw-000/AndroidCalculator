@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.all_man.androidcalculator.R
 import com.all_man.androidcalculator.database.AppleImageDatabase
 import com.all_man.androidcalculator.databinding.FragmentBananaGameBinding
+import kotlinx.coroutines.delay
 
 class BananaGameFragment : Fragment() {
     override fun onCreateView(
