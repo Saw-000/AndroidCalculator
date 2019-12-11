@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.all_man.androidcalculator.R
 import com.all_man.androidcalculator.databinding.FragmentGameOverBinding
 
@@ -20,6 +21,13 @@ class GameOverFragment: Fragment() {
         val binding : FragmentGameOverBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_game_over, container, false)
 
+        binding.tryAgainButton.setOnClickListener {
+            this.findNavController().navigate(
+                GameOverFragmentDirections.actionGameOverFragmentToBananaGameFragment(GameOverFragmentArgs.fromBundle(arguments!!).imgNum)
+            )
+        }
+
+        binding.setLifecycleOwner(this)
         return binding.root
     }
 

@@ -23,6 +23,12 @@
         <action
             android:id="@+id/action_bananaGameFragment_to_calculatorFragment"
             app:destination="@id/calculatorFragment" />
+        <action
+            android:id="@+id/action_bananaGameFragment_to_clearFragment"
+            app:destination="@id/clearFragment" />
+        <action
+            android:id="@+id/action_bananaGameFragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -41,9 +47,26 @@
     <fragment
         android:id="@+id/clearFragment"
         android:name="com.all_man.androidcalculator.nodataFragments.ClearFragment"
-        android:label="ClearFragment" />
+        android:label="ClearFragment" >
+        <argument
+            android:name="imgNum"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_clearFragment_to_bananaGameFragment"
+            app:destination="@id/bananaGameFragment" />
+        <action
+            android:id="@+id/action_clearFragment_to_bananaGame2Fragment"
+            app:destination="@id/bananaGame2Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/gameOverFragment"
         android:name="com.all_man.androidcalculator.nodataFragments.GameOverFragment"
-        android:label="GameOverFragment" />
+        android:label="GameOverFragment" >
+        <argument
+            android:name="imgNum"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_gameOverFragment_to_bananaGameFragment"
+            app:destination="@id/bananaGameFragment" />
+    </fragment>
 </navigation>
