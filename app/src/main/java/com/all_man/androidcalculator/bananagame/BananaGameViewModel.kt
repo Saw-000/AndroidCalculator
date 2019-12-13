@@ -132,6 +132,7 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
 
 
 
+
     // When the Navigation is finished, change _navigateToClearFragment.value to false
     // for the navigation.
     fun onFinishNavigateToClearFragment() {
