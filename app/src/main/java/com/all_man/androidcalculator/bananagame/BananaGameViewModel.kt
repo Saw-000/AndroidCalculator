@@ -122,9 +122,6 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
         }
     }
 
-
-
-
     // When right-image is clicked, change _navigateToClearFragment.value to true.
     fun onNavigateToClearFragment() {
         uiScope.launch {
@@ -132,6 +129,9 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
             _navigateToClearFragment.value = imageNum
         }
     }
+
+
+
     // When the Navigation is finished, change _navigateToClearFragment.value to false
     // for the navigation.
     fun onFinishNavigateToClearFragment() {
@@ -144,6 +144,7 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
     fun onNavigateToGameOverFragment() {
         uiScope.launch {
             delay(1500)
+
             _navigateToGameOverFragment.value = imageNum
         }
     }
