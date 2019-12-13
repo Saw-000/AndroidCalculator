@@ -32,9 +32,9 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
 ✅UI作成
  - ✅recycleView実装  
  - ✅touch機能実装  
-その他の機能  
- - 制限時間
- - 正解/時間切れ後の画面遷移
- 
+✅その他の機能  
+ - ✅制限時間
+ - ✅正解/時間切れ後の画面遷移   
 #### BananaGameFragment2実装  
+
 #### テスト(jenkins)導入  
