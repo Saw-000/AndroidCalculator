@@ -22,13 +22,17 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_bananaGameFragment_to_calculatorFragment"
-            app:destination="@id/calculatorFragment" />
+            app:destination="@id/calculatorFragment"
+            app:popUpTo="@+id/calculatorFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_bananaGameFragment_to_clearFragment"
-            app:destination="@id/clearFragment" />
+            app:destination="@id/clearFragment"
+            app:popUpTo="@+id/calculatorFragment" />
         <action
             android:id="@+id/action_bananaGameFragment_to_gameOverFragment"
-            app:destination="@id/gameOverFragment" />
+            app:destination="@id/gameOverFragment"
+            app:popUpTo="@+id/calculatorFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -53,10 +57,12 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_clearFragment_to_bananaGameFragment"
-            app:destination="@id/bananaGameFragment" />
+            app:destination="@id/bananaGameFragment"
+            app:popUpTo="@+id/calculatorFragment" />
         <action
             android:id="@+id/action_clearFragment_to_bananaGame2Fragment"
-            app:destination="@id/bananaGame2Fragment" />
+            app:destination="@id/bananaGame2Fragment"
+            app:popUpTo="@+id/calculatorFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameOverFragment"
@@ -67,6 +73,7 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_gameOverFragment_to_bananaGameFragment"
-            app:destination="@id/bananaGameFragment" />
+            app:destination="@id/bananaGameFragment"
+            app:popUpTo="@+id/calculatorFragment" />
     </fragment>
 </navigation>
