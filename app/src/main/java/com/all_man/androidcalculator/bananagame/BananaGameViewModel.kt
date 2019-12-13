@@ -54,10 +54,16 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
     val navigateToGameOverFragment: LiveData<Int>
         get() = _navigateToGameOverFragment
 
+    // flag for clickability of recyclerView_items
+    private val _flag = MutableLiveData<Boolean>()
+    val flag: LiveData<Boolean>
+        get() = _flag
+
     init {
         initializeDatabase(tappedNum)
         _navigateToClearFragment.value = null
         _navigateToGameOverFragment.value = null
+        _flag.value = true
 
         // timer
         timer = object: CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
@@ -80,6 +86,14 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
             insertAllInfo(Num)
         }
     }
+//        fun onClear() {
+//            uiScope.launch { clear() }
+//        }
+    private suspend fun clear() {
+        withContext(Dispatchers.IO) {
+            database.clear()
+        }
+    }
     private suspend fun insertAllInfo(Num: Int) {
         withContext(Dispatchers.IO) {
             database.bulkInsert(
@@ -96,7 +110,7 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
 
     // recyclerViewのitemのClickListenerから呼ばれる関数
     // タッチされた画像のdatabase内リソースidを変更する処理をスタート
-    fun onSetAppleInfo(position: Int, imgNum: Int, displayWrongText: Boolean) {
+    fun onSetAppleInfo(position: Int, imgNum: Int, displayWrongText: Boolean){
         uiScope.launch {
             setAppleInfo(position, imgNum, displayWrongText)
         }
@@ -109,29 +123,27 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
     }
 
 
-    private suspend fun clear() {
-        withContext(Dispatchers.IO) {
-            database.clear()
-        }
-    }
 
 
     // When right-image is clicked, change _navigateToClearFragment.value to true.
     fun onNavigateToClearFragment() {
         uiScope.launch {
-            delay(1000)
+            delay(1500)
             _navigateToClearFragment.value = imageNum
         }
     }
     // When the Navigation is finished, change _navigateToClearFragment.value to false
     // for the navigation.
-    fun onFinishNavigateToClearFragment() { _navigateToClearFragment.value = null }
+    fun onFinishNavigateToClearFragment() {
+        _navigateToClearFragment.value = null
+        flagTrue()
+    }
 
     // When wrong-image is clicked or time is up, change _navigateToGameOverFragment.value to true
     // for the navigation.
     fun onNavigateToGameOverFragment() {
         uiScope.launch {
-            delay(1000)
+            delay(1500)
             _navigateToGameOverFragment.value = imageNum
         }
     }
@@ -139,6 +151,8 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
     // for the navigation.
     fun onFinishNavigateToGameOverFragment() { _navigateToGameOverFragment.value = null }
 
+    fun flagTrue() { _flag.value = true }
+    fun flagFalse() { _flag.value = false }
 
     /** onClearedってどのthreadで実行？
      *  viewModel破棄でdatabase.clear()は可能？
