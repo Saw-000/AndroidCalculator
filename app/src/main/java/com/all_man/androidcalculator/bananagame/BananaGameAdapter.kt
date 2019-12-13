@@ -114,7 +114,7 @@ class RecyclerViewItemListener(var clickListener: (info: AppleImageInfo) -> Unit
 }
 
 // for Header
-sealed class DataItem() {
+sealed class DataItem {
     abstract val id: Int
     data class AppleImageInfoItem(val appleImageInfo: AppleImageInfo): DataItem() {
         override val id = appleImageInfo.dataId

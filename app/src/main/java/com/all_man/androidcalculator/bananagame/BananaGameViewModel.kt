@@ -29,10 +29,31 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
     val navigateToGameOverFragment: LiveData<Int>
         get() = _navigateToGameOverFragment
 
+    // flag for clickability of recyclerView_items
+    private val _flag = MutableLiveData<Boolean>()
+    val flag: LiveData<Boolean>
+        get() = _flag
+
     init {
         initializeDatabase(tappedNum)
         _navigateToClearFragment.value = null
         _navigateToGameOverFragment.value = null
+<<<<<<< HEAD
+=======
+        _flag.value = true
+
+        // timer
+        timer = object: CountDownTimer(COUNTDOWN_TIME, ONE_SECOND) {
+            override fun onTick(p0: Long) {
+                _currentTime.value = p0 / ONE_SECOND
+            }
+            override fun onFinish() {
+                _currentTime.value = DONE
+                onNavigateToGameOverFragment()
+            }
+        }
+        timer.start()
+>>>>>>> 49cf457... Add nonclickability during one_item clicked.
     }
 
     // database初期化->電卓から受け取った値分のimageinfoを作成
@@ -40,6 +61,14 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
         uiScope.launch {
             clear()
             insertAllInfo(Num)
+        }
+    }
+//        fun onClear() {
+//            uiScope.launch { clear() }
+//        }
+    private suspend fun clear() {
+        withContext(Dispatchers.IO) {
+            database.clear()
         }
     }
     private suspend fun insertAllInfo(Num: Int) {
@@ -58,7 +87,7 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
 
     // recyclerViewのitemのClickListenerから呼ばれる関数
     // タッチされた画像のdatabase内リソースidを変更する処理をスタート
-    fun onSetAppleInfo(position: Int, imgNum: Int, displayWrongText: Boolean) {
+    fun onSetAppleInfo(position: Int, imgNum: Int, displayWrongText: Boolean){
         uiScope.launch {
             setAppleInfo(position, imgNum, displayWrongText)
         }
@@ -71,11 +100,6 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
     }
 
 
-    private suspend fun clear() {
-        withContext(Dispatchers.IO) {
-            database.clear()
-        }
-    }
 
 
     // When right-image is clicked, change _navigateToClearFragment.value to true.
@@ -85,8 +109,17 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
             _navigateToClearFragment.value = imageNum
         }
     }
+<<<<<<< HEAD
     // When the Navigation is finished, change _navigateToClearFragment.value to false.
     fun onFinishNavigateToClearFragment() { _navigateToClearFragment.value = null }
+=======
+    // When the Navigation is finished, change _navigateToClearFragment.value to false
+    // for the navigation.
+    fun onFinishNavigateToClearFragment() {
+        _navigateToClearFragment.value = null
+        flagTrue()
+    }
+>>>>>>> 49cf457... Add nonclickability during one_item clicked.
 
     // When wrong-image is clicked or time is up, change _navigateToGameOverFragment.value to true.
     fun onNavigateToGameOverFragment() {
@@ -98,6 +131,8 @@ class BananaGameViewModel(dataSource: AppleImageDatabaseDao,
     // When the Navigation is finished, change _navigateToGameOverFragment.value to false.
     fun onFinishNavigateToGameOverFragment() { _navigateToGameOverFragment.value = null }
 
+    fun flagTrue() { _flag.value = true }
+    fun flagFalse() { _flag.value = false }
 
     /** onClearedってどのthreadで実行？
      *  viewModel破棄でdatabase.clear()は可能？

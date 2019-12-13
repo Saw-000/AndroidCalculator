@@ -46,15 +46,23 @@ class BananaGameFragment : Fragment() {
         val adapter = BananaGameAdapter(RecyclerViewItemListener {
             when (it.imageNumber) {
                 1 -> {
-                    viewModel.onSetAppleInfo(it.dataId, -1, false)
-                    viewModel.onNavigateToClearFragment()
+                    if (viewModel.flag.value!!) {
+                        viewModel.flagFalse()
+                        viewModel.onSetAppleInfo(it.dataId, -1, false)
+                        viewModel.onNavigateToClearFragment()
+                    }
                 }
                 2 -> {
-                    viewModel.onSetAppleInfo(it.dataId, -2, true)
-                    viewModel.onNavigateToGameOverFragment()
+                    if (viewModel.flag.value!!) {
+                        viewModel.onSetAppleInfo(it.dataId, -2, true)
+                    }
                 }
                 0, -1, -2 -> {}
-                else -> viewModel.onSetAppleInfo(it.dataId, 0, false)
+                else -> {
+                    if (viewModel.flag.value!!) {
+                        viewModel.onSetAppleInfo(it.dataId, 0, false)
+                    }
+                }
             }
         })
         binding.appleRecyclerView.adapter = adapter
