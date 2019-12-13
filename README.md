@@ -24,13 +24,17 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
   - ✅optin-menuの実装  
   - ✅Nav Drawerの実装  
   - ✅Navigation追加
-#### SearchBananaFragment実装  
-・Navigatin追加  
-  - optin-menuへの実装  
-  - Nav Drawerへの実装  
-  - Navigation追加  
-・UI作成
- - recycleView実装  
- - touch機能実装  
-#### SearchBananaFragment2実装  
+#### BananaGameFragment実装  
+✅Navigatin追加  
+  - ✅optin-menuへの実装  
+  - ✅Nav Drawerへの実装  
+  - ✅Navigation追加  
+✅UI作成
+ - ✅recycleView実装  
+ - ✅touch機能実装  
+その他の機能  
+ - 制限時間
+ - 正解/時間切れ後の画面遷移
+ 
+#### BananaGameFragment2実装  
 #### テスト(jenkins)導入  
