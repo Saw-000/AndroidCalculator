@@ -47,18 +47,25 @@
     <fragment
         android:id="@+id/bananaGame2Fragment"
         android:name="com.all_man.androidcalculator.bananagame2.BananaGame2Fragment"
-        android:label="BananaGame2Fragment" />
+        android:label="BananaGame2Fragment" >
+        <action
+            android:id="@+id/action_bananaGame2Fragment_to_gameOverFragment"
+            app:destination="@id/gameOverFragment"
+            app:popUpTo="@+id/calculatorFragment" />
+        <action
+            android:id="@+id/action_bananaGame2Fragment_to_clearFragment"
+            app:destination="@id/clearFragment"
+            app:popUpTo="@+id/calculatorFragment" />
+    </fragment>
     <fragment
         android:id="@+id/clearFragment"
         android:name="com.all_man.androidcalculator.nodataFragments.ClearFragment"
         android:label="ClearFragment" >
-        <argument
-            android:name="imgNum"
-            app:argType="integer" />
         <action
-            android:id="@+id/action_clearFragment_to_bananaGameFragment"
-            app:destination="@id/bananaGameFragment"
-            app:popUpTo="@+id/calculatorFragment" />
+            android:id="@+id/action_clearFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment"
+            app:popUpTo="@+id/calculatorFragment"
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_clearFragment_to_bananaGame2Fragment"
             app:destination="@id/bananaGame2Fragment"
@@ -75,5 +82,14 @@
             android:id="@+id/action_gameOverFragment_to_bananaGameFragment"
             app:destination="@id/bananaGameFragment"
             app:popUpTo="@+id/calculatorFragment" />
+        <action
+            android:id="@+id/action_gameOverFragment_to_bananaGame2Fragment"
+            app:destination="@id/bananaGame2Fragment"
+            app:popUpTo="@+id/calculatorFragment" />
+        <action
+            android:id="@+id/action_gameOverFragment_to_calculatorFragment"
+            app:destination="@id/calculatorFragment"
+            app:popUpTo="@+id/calculatorFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

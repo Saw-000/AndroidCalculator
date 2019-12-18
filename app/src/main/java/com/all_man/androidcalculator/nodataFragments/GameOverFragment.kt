@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.all_man.androidcalculator.R
 import com.all_man.androidcalculator.databinding.FragmentGameOverBinding
@@ -22,8 +23,15 @@ class GameOverFragment: Fragment() {
             inflater, R.layout.fragment_game_over, container, false)
 
         binding.tryAgainButton.setOnClickListener {
+            when (GameOverFragmentArgs.fromBundle(arguments!!).imgNum) {
+                Int.MIN_VALUE -> this.findNavController().navigate(GameOverFragmentDirections.actionGameOverFragmentToBananaGame2Fragment())
+                else -> this.findNavController().navigate(GameOverFragmentDirections.actionGameOverFragmentToBananaGameFragment(GameOverFragmentArgs.fromBundle(arguments!!).imgNum))
+            }
+        }
+
+        binding.backToCalculator2Button.setOnClickListener {
             this.findNavController().navigate(
-                GameOverFragmentDirections.actionGameOverFragmentToBananaGameFragment(GameOverFragmentArgs.fromBundle(arguments!!).imgNum)
+                GameOverFragmentDirections.actionGameOverFragmentToCalculatorFragment()
             )
         }
 

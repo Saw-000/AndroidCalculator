@@ -49,4 +49,6 @@
     <string name="clear">clear</string>
     <string name="game_over">GameOver</string>
     <string name="try_again">try again</string>
+    <string name="give_up_text">give up</string>
+    <string name="back_to_calculator">back Calculator</string>
 </resources>

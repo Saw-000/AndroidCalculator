@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -6,22 +7,27 @@
     <data>
         <variable
             name="viewModel"
-            type="com.all_man.androidcalculator.bananagame.BananaGameViewModel"/>
+            type="com.all_man.androidcalculator.bananagame2.BananaGame2ViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/apple_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toTopOf="parent"
+        <ImageView
+            android:id="@+id/fruits_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewModel.setImageUrl()}"
+            android:layout_margin="@dimen/small_margin"
+            app:layout_constraintBottom_toTopOf="@+id/timer_text"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/back_button"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:setUrlImage="@{viewModel.imageUrl}"
+            tools:srcCompat="@drawable/fruits_one_apple" />
+
 
         <TextView
             android:id="@+id/timer_text"
@@ -29,23 +35,27 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/small_margin"
             android:layout_marginEnd="@dimen/small_margin"
-            android:layout_marginBottom="@dimen/small_margin"
-            android:fontFamily="sans-serif"
+            android:layout_marginBottom="@dimen/big_margin"
+            android:text="@{viewModel.currentTimeString}"
             android:textColor="@android:color/darker_gray"
             android:textSize="14sp"
             android:textStyle="normal"
-            android:text="@{viewModel.currentTimeString}"
-            app:layout_constraintBottom_toTopOf="@+id/back_button"
+            android:enabled="@{viewModel.clickableFlag}"
+            app:layout_constraintBottom_toTopOf="@+id/give_up_button"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="0:00" />
 
         <Button
-            android:id="@+id/back_button"
+            android:id="@+id/give_up_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/back"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
+            android:onClick="@{ () -> viewModel.onNavGameOver() }"
+            android:text="@string/give_up_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
