@@ -11,10 +11,10 @@
             android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="@dimen/layout_margin"
-            android:layout_marginTop="@dimen/layout_margin"
-            android:layout_marginEnd="@dimen/layout_margin"
-            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginStart="@dimen/small_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/small_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             app:layout_constraintBottom_toTopOf="@+id/back_to_calculator_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -25,14 +25,14 @@
                 android:id="@+id/layout_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin"
+                android:layout_marginTop="@dimen/small_margin"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/detail_title_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/text_padding"
+                    android:padding="@dimen/small_padding"
                     android:text="@string/title_detail"
                     android:textAlignment="textStart"
                     android:textSize="30sp"
@@ -50,7 +50,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/monda"
-                    android:padding="@dimen/text_padding"
+                    android:padding="@dimen/small_padding"
                     android:text="@string/bio"
                     android:textSize="18sp" />
 
@@ -58,7 +58,7 @@
                     android:id="@+id/green_banana_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/green_bananas" />
+                    app:srcCompat="@drawable/fruits_green_bananas" />
 
             </LinearLayout>
         </ScrollView>
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/layout_margin"
+            android:layout_marginBottom="@dimen/small_margin"
             android:text="@string/back"
             android:textAlignment="center"
             app:layout_constraintBottom_toBottomOf="parent"

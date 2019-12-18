@@ -26,9 +26,9 @@ class ClearFragment : Fragment() {
                 ClearFragmentDirections.actionClearFragmentToBananaGame2Fragment()
             )
         }
-        binding.tryAgainButton.setOnClickListener {
+        binding.backToCalculatorButton.setOnClickListener {
             this.findNavController().navigate(
-                ClearFragmentDirections.actionClearFragmentToBananaGameFragment(ClearFragmentArgs.fromBundle(arguments!!).imgNum)
+                ClearFragmentDirections.actionClearFragmentToCalculatorFragment()
             )
         }
 

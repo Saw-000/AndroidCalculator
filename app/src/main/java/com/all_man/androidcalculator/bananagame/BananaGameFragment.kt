@@ -72,7 +72,7 @@ class BananaGameFragment : Fragment() {
         viewModel.navigateToClearFragment.observe(this, Observer {
             it?.let {
                 this.findNavController().navigate(
-                BananaGameFragmentDirections.actionBananaGameFragmentToClearFragment(viewModel.navigateToClearFragment.value!!)
+                BananaGameFragmentDirections.actionBananaGameFragmentToClearFragment()
                 )
                 viewModel.onFinishNavigateToClearFragment()
             }

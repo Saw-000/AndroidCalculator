@@ -1,7 +1,6 @@
 package com.all_man.androidcalculator.bananagame
 
 import android.app.Application
-import android.database.DatabaseUtils
 import android.os.CountDownTimer
 import android.text.format.DateUtils
 import androidx.lifecycle.AndroidViewModel

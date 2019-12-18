@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -67,10 +66,10 @@ class BananaGameAdapter(val clickListener: RecyclerViewItemListener) :
             binding.clickListener = clickListener
             binding.tappedAppleImage.setImageResource(
                 when (item.imageNumber) {
-                    0 -> R.drawable.apple_core
-                    -1 -> R.drawable.one_banana
-                    -2 -> R.drawable.banana_peel
-                    else -> R.drawable.one_apple
+                    0 -> R.drawable.fruits_apple_core
+                    -1 -> R.drawable.fruits_one_banana
+                    -2 -> R.drawable.fruits_banana_peel
+                    else -> R.drawable.fruits_one_apple
                 }
             )
             binding.informWrongText.visibility =
