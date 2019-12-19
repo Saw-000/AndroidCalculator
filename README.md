@@ -37,8 +37,10 @@ binding, lifeCycle, MVVM, livedata, RecycleView, etc...
  - ✅正解/時間切れ後の画面遷移   
 #### BananaGameFragment2実装  
 ✅画像表示  
-"ある条件"によって、バナナの画像を表示する。  
-navigation to clear
+✅"ある条件"によって、バナナの画像を表示する。  
+navigation to clear due to "ある条件"  
+ - glideのメソッドを探し出す。  
+ - 実装  
 #### その他  
 detailの説明追加    
 clearとgameOverのマテリアルデザイン  
